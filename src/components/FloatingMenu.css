@@ -1,0 +1,419 @@
+﻿.floating-menu-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  z-index: 150; /* Z-index mayor que el Navbar (100) para que el tooltip quede por encima de todo */
+  margin-top: -15px; 
+}
+
+.floating-menu-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 64px; /* Separación fija y elegante entre los enlaces y el buscador */
+  background-color: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(16px);
+  width: fit-content; /* Se ciñe a su contenido en lugar de expandirse horizontalmente */
+  max-width: 95%;
+  height: 80px;
+  border-radius: 40px;
+  
+  /* UX/UI: Stroke tecnológico y énfasis visual ajustado a gris */
+  border: 1px solid rgba(0, 0, 0, 0.1); /* Trazo sutil en gris neutro */
+  box-shadow: 
+    0 16px 40px rgba(0, 0, 0, 0.08), /* Sombra base amplia */
+    0 4px 12px rgba(0, 0, 0, 0.04);  /* Sombra interna más definida */
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  
+  /* Animación Innovadora de Entrada (Efecto Faro) */
+  animation: 
+    menuEntrancePop 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both,
+    menuGreenRipple 2s ease-out 1.2s 1;
+    
+  padding: 0 12px 0 32px;
+  font-family: var(--font-body);
+}
+
+/* Hover Interactivo: Sombra verde sutil permanente sugerida por el usuario */
+.floating-menu-container:hover {
+  transform: translateY(-4px) scale(1.01);
+  box-shadow: 0 20px 45px rgba(2, 158, 71, 0.18), 0 4px 15px rgba(2, 158, 71, 0.08);
+  border-color: rgba(2, 158, 71, 0.4);
+}
+
+/* Keyframes de las animaciones */
+@keyframes menuEntrancePop {
+  0% {
+    opacity: 0;
+    transform: translateY(30px) scale(0.9);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(-5px) scale(1.02);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes menuGreenRipple {
+  0% {
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08), 0 0 0 0 rgba(0, 168, 89, 0.6);
+  }
+  100% {
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08), 0 0 0 35px rgba(0, 168, 89, 0);
+  }
+}
+
+/* Enlaces Izquierda */
+.fm-links {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.fm-vertical-divider {
+  width: 1px;
+  height: 40px;
+  background-color: #eaeaea;
+  flex-shrink: 0;
+  align-self: center;
+}
+
+.fm-link {
+  display: flex;
+  flex-direction: column; /* Apila el icono sobre el texto */
+  align-items: center;
+  justify-content: center;
+  gap: 4px; /* Un gap más sutil ya que están apilados */
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--starken-text-dark);
+  padding: 8px 10px; /* ├ürea de toque ajustada según solicitud */
+  border-radius: 12px; /* Bordes redondeados sutiles si alguna vez lleva fondo */
+  transition: all 0.2s ease;
+}
+
+.fm-link span {
+  white-space: nowrap; /* Mantiene el texto en una sola línea */
+}
+
+.fm-link:hover {
+  color: var(--starken-green);
+}
+
+.fm-icon {
+  width: 20px;
+  height: 20px;
+}
+
+.fm-icon-img {
+  width: 22px; /* Ligeramente más grandes para equilibrar las imágenes */
+  height: 22px;
+  object-fit: contain;
+}
+
+.fm-icon.orange {
+  stroke: #ff8400; /* Naranja pedido */
+}
+
+/* Barra de Búsqueda Derecha */
+.fm-search-area {
+  display: flex;
+  align-items: center;
+  background-color: #f5f5f5;
+  height: 56px;
+  border-radius: 28px;
+  padding: 0 16px 0 24px;
+  width: 480px;
+  border: 1px solid transparent;
+  transition: all 0.3s ease;
+}
+
+/* UX: Efecto visual al escribir o hacer click (focus) */
+.fm-search-area:focus-within {
+  background-color: #ffffff;
+  border-color: rgba(0, 168, 89, 0.4);
+  box-shadow: 0 0 0 4px rgba(0, 168, 89, 0.1);
+}
+
+.fm-search-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-family: var(--font-body);
+  font-size: 15px;
+  color: var(--starken-text-dark);
+}
+
+.fm-search-input::placeholder {
+  color: var(--starken-text-muted);
+  font-weight: 500;
+}
+
+.fm-search-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.fm-action-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  transition: transform 0.2s;
+}
+
+.fm-action-btn:hover {
+  transform: scale(1.1);
+}
+
+.fm-clear-btn .fm-icon.gray {
+  stroke: #999999;
+  width: 18px;
+  height: 18px;
+  transition: stroke 0.2s;
+}
+
+.fm-clear-btn:hover .fm-icon.gray {
+  stroke: #333333; /* Oscurece la X al pasar el mouse */
+}
+
+.fm-divider {
+  width: 1px;
+  height: 20px;
+  background-color: #cccccc;
+}
+
+.fm-action-btn.search .fm-icon.green {
+  stroke: var(--starken-green); /* Lupa verde */
+  width: 22px;
+  height: 22px;
+}
+
+@media (max-width: 1024px) {
+  .floating-menu-container {
+    width: calc(100% - 80px);
+    flex-direction: column;
+    height: auto;
+    padding: 20px;
+    gap: 20px;
+    border-radius: 24px;
+  }
+  .floating-menu-wrapper {
+    margin-top: -15px;
+  }
+  .fm-search-area {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .floating-menu-wrapper {
+    margin-top: -24px;
+  }
+  .floating-menu-container {
+    width: calc(100% - 32px) !important; /* Respeta el margen estándar de 16px a cada lado (16 * 2 = 32px) */
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    gap: 16px !important;
+  }
+  .fm-links {
+    width: 100% !important;
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 10px !important;
+    justify-content: space-between !important;
+    order: 2 !important; /* Muestra las opciones abajo */
+  }
+  .fm-vertical-divider {
+    display: none !important; /* Oculta divisores */
+  }
+  .fm-link {
+    flex: 1 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background-color: #ffffff !important;
+    border: 1px solid #eaeaea !important;
+    border-radius: 12px !important;
+    padding: 10px 4px !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05) !important;
+  }
+  .fm-link span {
+    font-size: 13px !important;
+  }
+  .fm-search-area {
+    width: 100% !important;
+    height: 52px !important;
+    padding: 0 16px 0 20px !important;
+    order: 1 !important; /* Muestra buscador arriba */
+    background-color: #ffffff !important;
+    border: 1px solid #eaeaea !important;
+    border-radius: 26px !important;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06) !important;
+    box-sizing: border-box !important;
+  }
+  .fm-search-input {
+    min-width: 0;
+    font-size: 12px;
+  }
+  .fm-search-actions {
+    gap: 8px;
+  }
+  .fm-icon-img {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+/* Tooltip Contextual (Ayuda de Número de Envío) */
+.tooltip-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fm-action-btn.active {
+  transform: scale(1.1);
+}
+
+.help-tooltip-popover {
+  position: absolute;
+  bottom: calc(100% + 24px); /* Aparece justo arriba del botón */
+  right: -50px; /* Desfasado para centrarse visualmente sobre el ícono */
+  width: 290px; /* Ligeramente más angosto para acompañar la letra chica */
+  background-color: #ffffff;
+  border: 1px solid rgba(0, 168, 89, 0.2);
+  border-radius: 16px;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12), 0 4px 16px rgba(0, 168, 89, 0.08);
+  padding: 20px; /* Padding ajustado */
+  z-index: 100;
+  animation: tooltipFadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  transform-origin: bottom right;
+  text-align: left;
+}
+
+/* El "piquito" del globo que apunta al ícono */
+.help-tooltip-popover::after {
+  content: '';
+  position: absolute;
+  bottom: -7px;
+  right: 57px; /* Alineado al centro del botón ? */
+  width: 14px;
+  height: 14px;
+  background-color: #ffffff;
+  border-right: 1px solid rgba(0, 168, 89, 0.2);
+  border-bottom: 1px solid rgba(0, 168, 89, 0.2);
+  transform: rotate(45deg);
+}
+
+.tooltip-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+  border-bottom: 1px solid #f0f0f0;
+  padding-bottom: 12px;
+}
+
+.tooltip-icon {
+  width: 20px;
+  height: 20px;
+}
+
+.tooltip-header h4 {
+  margin: 0;
+  font-size: 14px; /* Letra achicada */
+  font-weight: 700;
+  color: #2b2e2c;
+}
+
+.help-tooltip-popover p {
+  margin: 0 0 10px 0;
+  font-size: 12.5px; /* Letra achicada para lectura compacta */
+  line-height: 1.5;
+  color: #555555;
+}
+
+.help-tooltip-popover p:last-child {
+  margin-bottom: 0;
+}
+
+.help-tooltip-popover strong {
+  color: #029E47; /* Resalta datos críticos en verde */
+  font-weight: 600;
+}
+
+.help-tooltip-popover em {
+  font-style: normal;
+  color: #333333;
+  font-weight: 500;
+  background-color: #f5f5f5;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+@keyframes tooltipFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Animación especial para la versión móvil */
+@keyframes tooltipMobileFadeIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -45%) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+/* Comportamiento híbrido: Tooltip en Desktop, Modal en Mobile */
+@media (max-width: 768px) {
+  .help-tooltip-popover {
+    /* Se despega del botón y se va al centro de la pantalla */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    bottom: auto;
+    right: auto;
+    width: calc(100% - 40px); /* Ocupa el ancho con margen */
+    max-width: 340px;
+    z-index: 9999;
+    
+    /* El truco mágico: una sombra infinita que simula el fondo negro (backdrop) */
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2), 0 0 0 100vmax rgba(0,0,0,0.6); 
+    
+    animation: tooltipMobileFadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  /* Ocultamos la "colita" porque ya no está pegado al botón */
+  .help-tooltip-popover::after {
+    display: none;
+  }
+}
+

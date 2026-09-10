@@ -1,0 +1,223 @@
+.footer-section {
+  background-color: #2b2e2c; /* El gris oscuro casi negro de la imagen */
+  color: #ffffff;
+  padding: 80px 40px; /* Alineado con el margen del header 1 (top-nav) */
+  font-family: 'Nunito', sans-serif;
+  border-top: 1px solid #3a3d3b;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+/* Columna 1: Marca */
+.brand-col {
+  flex: 2;
+  max-width: 20%; /* No supera el 20% del ancho como se solicitó */
+}
+
+.footer-logo {
+  height: 48px;
+  margin-bottom: 24px;
+  display: block;
+}
+
+.brand-text-bold {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.5;
+  margin-bottom: 16px;
+  color: #ffffff;
+}
+
+.brand-text-light {
+  font-size: 13px;
+  font-weight: 400;
+  color: #d0d0d0;
+  line-height: 1.5;
+  margin-bottom: 16px;
+}
+
+.brand-text-action {
+  font-size: 14px;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 24px;
+}
+
+.footer-badges {
+  display: flex;
+  gap: 16px;
+  align-items: center; /* Alineación vertical centrada para soportar diferentes alturas */
+}
+
+.footer-badge-img {
+  width: auto;
+  height: 56px; /* Altura suficiente para que los logos se lean bien */
+  object-fit: contain;
+}
+
+.footer-badge-img.procalidad {
+  height: 34px; /* Reducida en un 40% (aprox 60% del tamaño original de 56px) */
+}
+
+/* Columnas de Enlaces */
+.links-col {
+  flex: 1;
+  min-width: 180px;
+}
+
+.footer-heading {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 24px;
+  color: #ffffff;
+}
+
+.footer-heading.uppercase {
+  text-transform: uppercase;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+}
+
+.footer-links-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-links-list li {
+  margin-bottom: 14px;
+}
+
+.footer-links-list a {
+  color: #8c9690; /* El tono gris verdoso apagado de los links inactivos */
+  text-decoration: none;
+  font-size: 14px;
+  font-family: 'Nunito', sans-serif;
+  transition: color 0.2s;
+}
+
+.footer-links-list a:hover {
+  color: #ffffff;
+}
+
+/* Columna Social */
+.social-col {
+  flex: 1.5;
+  min-width: 280px;
+}
+
+.footer-divider {
+  border: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  margin: 16px 0 24px;
+}
+
+.social-icons {
+  display: flex;
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+.social-icon {
+  width: 20px;
+  height: 20px;
+  color: #ffffff;
+  transition: transform 0.2s, color 0.2s;
+}
+
+.social-icon:hover {
+  transform: translateY(-3px);
+  color: #029E47;
+}
+
+.btn-trabaja {
+  background-color: #029E47; /* Verde clásico */
+  color: #ffffff;
+  border: none;
+  border-radius: 4px; /* Bordes levemente redondeados según la imagen */
+  padding: 14px 24px;
+  font-size: 15px;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 600;
+  cursor: pointer;
+  width: 100%; /* El botón ocupa todo el ancho de su columna */
+  transition: background-color 0.2s;
+}
+
+.btn-trabaja:hover {
+  background-color: #02853c;
+}
+
+.footer-chevron {
+  display: none;
+  width: 20px;
+  height: 20px;
+  transition: transform 0.3s ease;
+}
+
+@media (max-width: 1024px) {
+  .footer-section {
+    padding: 60px 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .footer-section {
+    padding: 40px 20px;
+  }
+  .footer-container {
+    flex-direction: column;
+    gap: 24px;
+  }
+  .brand-col, .links-col, .social-col {
+    max-width: 100%;
+  }
+  
+  /* Acordeón Logic para móvil */
+  .footer-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0;
+    padding: 12px 0;
+    cursor: pointer;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .footer-heading.static {
+    cursor: default;
+    border-bottom: none;
+    margin-bottom: 16px;
+    padding-bottom: 0;
+  }
+
+  .footer-chevron {
+    display: block;
+  }
+
+  .footer-links-list {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, margin-top 0.4s ease, opacity 0.4s ease;
+    opacity: 0;
+    margin-top: 0;
+  }
+
+  /* Cuando la sección está abierta */
+  .footer-col.open .footer-links-list {
+    max-height: 400px; /* Suficiente para que quepan todos los enlaces */
+    opacity: 1;
+    margin-top: 16px;
+    margin-bottom: 8px;
+  }
+
+  .footer-col.open .footer-chevron {
+    transform: rotate(180deg);
+  }
+}
+

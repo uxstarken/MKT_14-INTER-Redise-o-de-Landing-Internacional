@@ -1,0 +1,313 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,700&family=Inter:wght@400;500;700&display=swap');
+@import 'leaflet/dist/leaflet.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Design System Typography */
+  --font-title: 'DIN 2014', 'DIN Alternate', 'DIN Condensed', 'DIN', 'Inter', sans-serif;
+  --font-body: 'Nunito', sans-serif;
+  --font-family: var(--font-body);
+
+  /* Starken Design System Palettes */
+  /* Personas y Puntos (Verde) */
+  --starken-green: #029E47;
+  --starken-green-dark: #016E31;
+  --starken-green-light: #E6F5EC;
+
+  /* Partner (Morado) */
+  --starken-purple: #551A8B;
+  --starken-purple-dark: #3E1B6B;
+  --starken-purple-light: #F3E8FF;
+
+  /* Empresas (Teal / Azul Verdoso) */
+  --starken-teal: #2D7282;
+  --starken-teal-dark: #16424C;
+  --starken-teal-light: #EBF3F5;
+
+  /* Destacados / Promos / Acciones (Naranja) */
+  --starken-orange: #FF8400;
+  --starken-orange-dark: #EA580C;
+  --starken-orange-light: #FFF7ED;
+
+  /* Neutros */
+  --starken-text-dark: #1E293B;
+  --starken-text-muted: #64748B;
+  --starken-bg-light: #F8FAFC;
+  --starken-border: #E2E8F0;
+  --starken-white: #FFFFFF;
+
+  /* Formatos Pill & Radii */
+  --radius-pill: 9999px;
+  --radius-card: 16px;
+  --radius-badge: 12px;
+
+  /* Legacy Colors Fallback */
+  --color-green-primary: var(--starken-green);
+  --color-green-light: var(--starken-green-light);
+  --color-green-medium: var(--starken-green-dark);
+  --color-white: #FFFFFF;
+  --color-gray-light: #F5F5F5;
+  --color-black: #111111;
+  --color-gray-dark: var(--starken-text-dark);
+  --color-gray-text: var(--starken-text-muted);
+  --color-green-border: var(--starken-border);
+  
+  --text-base: 16px;
+  --text-sm: 14px;
+  --text-lg: 18px;
+  --text-xl: 24px;
+  --text-2xl: 32px;
+  --text-3xl: 48px;
+
+  /* Typography Scale */
+  --text-12: 12px;
+  --text-14: 14px;
+  --text-16: 16px;
+  --text-18: 18px;
+  --text-20: 20px;
+  --text-24: 24px;
+  --text-30: 30px;
+  --text-38: 38px;
+  --text-48: 48px;
+  --text-52: 52px;
+
+  /* Border Radius */
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 24px;
+  --radius-full: 9999px;
+  
+  /* Shadows */
+  --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+  --shadow-lg: 0 12px 24px rgba(0,0,0,0.12);
+  
+  /* Transitions */
+  --transition-fast: 0.2s ease-in-out;
+  --transition-normal: 0.3s ease;
+
+  /* Somos Partner Marketplace Design Tokens */
+  --purple-950: #0F0330;
+  --purple-900: #1C0752;
+  --purple-800: #2D0F6B;
+  --purple-700: #4C1D95;
+  --purple-600: #5B21B6;
+  --purple-500: #7C3AED;
+  --purple-400: #8B5CF6;
+  --purple-300: #A78BFA;
+  --purple-200: #C4B5FD;
+  --purple-100: #EDE9FE;
+  --purple-50:  #F5F3FF;
+  --orange-600: #EA580C;
+  --orange-500: #F97316;
+  --orange-400: #FB923C;
+  --orange-100: #FFEDD5;
+  --gray-900: #0F172A;
+  --gray-600: #475569;
+  --gray-400: #94A3B8;
+  --gray-200: #E2E8F0;
+  --gray-100: #F1F5F9;
+  --gray-55:  #F8FAFC;
+  --green-500: #22C55E;
+  --green-100: #DCFCE7;
+  --blue-500:  #3B82F6;
+  --blue-100:  #DBEAFE;
+  --shadow-purple: 0 8px 24px rgba(92, 33, 182, 0.25);
+  --shadow-orange: 0 8px 24px rgba(249, 115, 22, 0.35);
+}
+
+/* Mobile Typography Overrides */
+@media (max-width: 768px) {
+  :root {
+    --text-12: 12px;
+    --text-14: 12px;
+    --text-16: 14px;
+    --text-18: 16px;
+    --text-20: 18px;
+    --text-24: 20px;
+    --text-30: 24px;
+    --text-38: 26px;
+    --text-48: 32px;
+    --text-52: 40px;
+  }
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.app-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+html, body {
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  color: var(--starken-text-dark);
+  background-color: var(--starken-white);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-title);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+button, input, select, textarea {
+  font-family: var(--font-body);
+  border: none;
+  outline: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+/* Utilities */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 24px;
+  border-radius: var(--radius-sm);
+  font-weight: 500;
+  transition: all var(--transition-fast);
+}
+
+.btn-primary {
+  background-color: var(--color-green-primary);
+  color: var(--color-white);
+}
+
+.btn-primary:hover {
+  background-color: var(--color-green-medium);
+}
+
+.btn-outline {
+  background-color: transparent;
+  color: var(--color-green-primary);
+  border: 1px solid var(--color-green-primary);
+}
+
+.btn-outline:hover {
+  background-color: var(--color-green-light);
+}
+
+.badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  background-color: var(--color-green-light);
+  color: var(--color-green-primary);
+  font-size: var(--text-sm);
+  font-weight: 500;
+}
+
+.leaflet-container {
+  font-family: inherit;
+}
+
+/* Animación para la alerta */
+@keyframes marquee-seamless {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* Variables de tema dinámicas para Seguimiento */
+.seguimiento-wrapper {
+  font-family: 'Nunito', sans-serif;
+  --primary-color: #029E47;
+  --primary-hover: #02853c;
+  --primary-light: #e6f7ed;
+}
+
+.seguimiento-wrapper.theme-partner {
+  font-family: 'Nunito', sans-serif;
+  --primary-color: #411C72;
+  --primary-hover: #2d1350;
+  --primary-light: #f5f2fa;
+}
+
+.seguimiento-wrapper.theme-empresas {
+  font-family: 'Nunito', sans-serif;
+  --primary-color: #33798C;
+  --primary-hover: #255d6c;
+  --primary-light: #ecf5f7;
+}
+
+/* Clases específicas para aplicar DIN a los elementos que usaban Inter */
+.font-din,
+.seg-search-label,
+.seg-status-title,
+.seg-card-title,
+.seg-accordion-header,
+.seg-modal-header h3 {
+  font-family: 'DIN', sans-serif !important;
+}
+
+/* El input interno de búsqueda debe usar Nunito (originalmente Poppins) */
+.seg-search-input-inside {
+  font-family: 'Nunito', sans-serif !important;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+/* Desktop overrides for buttons in Seguimiento and Home/Internacional to have a border-radius of 7px */
+@media (min-width: 769px) {
+  .seguimiento-wrapper button,
+  .seguimiento-wrapper .btn,
+  .seguimiento-wrapper .rounded-full:is(button, a) {
+    border-radius: 7px !important;
+  }
+
+  /* Home & Internacional Desktop Buttons */
+  .btn-ingresar,
+  .card-btn,
+  .btn-secondary-services,
+  .ep-btn-orange,
+  .ep-btn-purple,
+  .ep-btn-green,
+  .recom-btn,
+  .inter-btn-primary,
+  .inter-whatsapp-btn,
+  .inter-form-submit-btn {
+    border-radius: 7px !important;
+  }
+}
