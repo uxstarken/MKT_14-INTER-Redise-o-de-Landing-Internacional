@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { 
   Check, 
@@ -9,7 +9,6 @@ import {
   Mail, 
   Clock, 
   MessageCircle, 
-  Send,
   DollarSign,
   Layers,
   Package,
@@ -20,7 +19,6 @@ import {
   TrendingDown,
   RefreshCw,
   ShieldCheck,
-  ChevronRight,
   Plane
 } from 'lucide-react';
 import './Internacional.css';
@@ -254,69 +252,57 @@ const Internacional = () => {
           </div>
 
           <div className="inter-soluciones-grid">
-            {/* Card 1: Starken box */}
-            <div className="inter-solucion-card" onClick={() => scrollToSection('starken-box')}>
-              <div className="inter-card-img-wrapper">
+            {/* Pilar 1: Starken box */}
+            <div className="inter-solucion-item">
+              <div className="inter-solucion-img-frame">
                 <img 
                   src="/inter-starken-box.jpg" 
                   alt="Starken Box Casilla USA" 
-                  className="inter-card-photo"
+                  className="inter-solucion-photo"
                 />
                 <span className="inter-photo-badge">Casilla USA</span>
               </div>
-              <div className="inter-solucion-body">
+              <div className="inter-solucion-info">
                 <h3 className="inter-solucion-title">Starken box</h3>
                 <p className="inter-solucion-desc">
                   Ofrecemos consolidaciones propias y regulares, end to end (USA, China y el resto del mundo), para emprendedores y empresas importadoras y/o exportadoras.
                 </p>
-                <div className="inter-solucion-action">
-                  <span>Saber más</span>
-                  <ArrowRight size={16} />
-                </div>
               </div>
             </div>
 
-            {/* Card 2: Crossborder */}
-            <div className="inter-solucion-card" onClick={() => scrollToSection('crossborder')}>
-              <div className="inter-card-img-wrapper">
+            {/* Pilar 2: Crossborder */}
+            <div className="inter-solucion-item">
+              <div className="inter-solucion-img-frame">
                 <img 
                   src="/inter-crossborder-tech.jpg" 
                   alt="Crossborder Starken" 
-                  className="inter-card-photo"
+                  className="inter-solucion-photo"
                 />
                 <span className="inter-photo-badge">E-commerce Global</span>
               </div>
-              <div className="inter-solucion-body">
+              <div className="inter-solucion-info">
                 <h3 className="inter-solucion-title">Crossborder</h3>
                 <p className="inter-solucion-desc">
                   Servicio de Cross-Border internacional con logística nacional y fullfilment. Ofrecemos soluciones como traje a la medida para atender las necesidades del ecommerce mundial.
                 </p>
-                <div className="inter-solucion-action">
-                  <span>Conoce más</span>
-                  <ArrowRight size={16} />
-                </div>
               </div>
             </div>
 
-            {/* Card 3: Forwarder */}
-            <div className="inter-solucion-card" onClick={() => scrollToSection('forwarder')}>
-              <div className="inter-card-img-wrapper">
+            {/* Pilar 3: Forwarder */}
+            <div className="inter-solucion-item">
+              <div className="inter-solucion-img-frame">
                 <img 
                   src="/inter-air-cargo.jpg" 
                   alt="Forwarder Starken" 
-                  className="inter-card-photo"
+                  className="inter-solucion-photo"
                 />
                 <span className="inter-photo-badge">Carga & Courier</span>
               </div>
-              <div className="inter-solucion-body">
+              <div className="inter-solucion-info">
                 <h3 className="inter-solucion-title">Forwarder</h3>
                 <p className="inter-solucion-desc">
                   Nuestra plataforma nos permite ofrecer servicio express courier end to end para cargas de todo el mundo hasta la puerta de tu casa. Como también servicios aéreos generales de importación y exportación.
                 </p>
-                <div className="inter-solucion-action">
-                  <span>Conoce más</span>
-                  <ArrowRight size={16} />
-                </div>
               </div>
             </div>
           </div>
@@ -351,15 +337,15 @@ const Internacional = () => {
 
               <ul className="inter-checklist" style={{ marginTop: '24px' }}>
                 <li>
-                  <div className="inter-check-icon"><Check size={20} strokeWidth={2.5} /></div>
+                  <div className="inter-check-icon"><Check size={14} strokeWidth={3} /></div>
                   <span>Sin cobros sorpresa. El valor que cotizas es el valor final que pagas. No tendrás cargos adicionales durante el proceso.</span>
                 </li>
                 <li>
-                  <div className="inter-check-icon"><Check size={20} strokeWidth={2.5} /></div>
+                  <div className="inter-check-icon"><Check size={14} strokeWidth={3} /></div>
                   <span>Conoce cómo calculamos tu envío. El valor se calcula según el mayor entre el peso real y el peso volumétrico de la carga.</span>
                 </li>
                 <li>
-                  <div className="inter-check-icon"><Check size={20} strokeWidth={2.5} /></div>
+                  <div className="inter-check-icon"><Check size={14} strokeWidth={3} /></div>
                   <span>Importar nunca fue tan fácil. Nosotros gestionamos la logística y el proceso aduanero por ti.</span>
                 </li>
               </ul>
@@ -395,30 +381,30 @@ const Internacional = () => {
 
               <ul className="inter-checklist">
                 <li>
-                  <div className="inter-check-icon"><Check size={20} strokeWidth={2.5} /></div>
+                  <div className="inter-check-icon"><Check size={14} strokeWidth={3} /></div>
                   <span>Última milla con cobertura total</span>
                 </li>
                 <li>
-                  <div className="inter-check-icon"><Check size={20} strokeWidth={2.5} /></div>
+                  <div className="inter-check-icon"><Check size={14} strokeWidth={3} /></div>
                   <span>Integración tecnológica</span>
                 </li>
                 <li>
-                  <div className="inter-check-icon"><Check size={20} strokeWidth={2.5} /></div>
+                  <div className="inter-check-icon"><Check size={14} strokeWidth={3} /></div>
                   <span>Equipo de expertos</span>
                 </li>
                 <li>
-                  <div className="inter-check-icon"><Check size={20} strokeWidth={2.5} /></div>
+                  <div className="inter-check-icon"><Check size={14} strokeWidth={3} /></div>
                   <span>Linehaul internacional, transporte eficiente</span>
                 </li>
                 <li>
-                  <div className="inter-check-icon"><Check size={20} strokeWidth={2.5} /></div>
+                  <div className="inter-check-icon"><Check size={14} strokeWidth={3} /></div>
                   <span>Nacionalización y desaduanamiento, nos encargamos de todo el proceso</span>
                 </li>
               </ul>
 
               <a 
-                href="#contacto" 
-                onClick={(e) => { e.preventDefault(); scrollToSection('contacto'); }}
+                href="#" 
+                onClick={(e) => e.preventDefault()}
                 className="inter-link-action"
               >
                 <span>Conoce nuestras integraciones</span>
@@ -683,7 +669,7 @@ const Internacional = () => {
                 className="inter-whatsapp-btn"
               >
                 <MessageCircle size={20} />
-                <span>Contáctanos por Whatsapp</span>
+                <span>Contáctanos en nuestro chat</span>
               </a>
             </div>
           </div>
