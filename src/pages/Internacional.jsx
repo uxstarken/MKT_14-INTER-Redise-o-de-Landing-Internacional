@@ -19,7 +19,8 @@ import {
   TrendingDown,
   RefreshCw,
   ShieldCheck,
-  Plane
+  Plane,
+  ChevronDown
 } from 'lucide-react';
 import './Internacional.css';
 
@@ -39,17 +40,28 @@ const Internacional = () => {
     asunto: ''
   });
   const [formSubmitted, setFormSubmitted] = useState(false);
+  const [isSelectOpen, setIsSelectOpen] = useState(false);
+  const selectRef = useRef(null);
 
-  // Close tooltip when clicking outside
+  const asuntoOptions = [
+    { value: "consultas", label: "Consultas" },
+    { value: "cotizacion", label: "Cotización" },
+    { value: "reclamos", label: "Reclamos" },
+  ];
+
+  // Close tooltip or select when clicking outside
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (helpRef.current && !helpRef.current.contains(event.target)) {
         setShowHelpTooltip(false);
       }
+      if (selectRef.current && !selectRef.current.contains(event.target)) {
+        setIsSelectOpen(false);
+      }
     };
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, [helpRef]);
+  }, [helpRef, selectRef]);
 
   const handleTrackingSearch = (e) => {
     if (e) e.preventDefault();
@@ -335,7 +347,7 @@ const Internacional = () => {
                 </h2>
               </div>
 
-              <ul className="inter-checklist" style={{ marginTop: '24px' }}>
+              <ul className="inter-checklist">
                 <li>
                   <div className="inter-check-icon"><Check size={14} strokeWidth={3} /></div>
                   <span>Sin cobros sorpresa. El valor que cotizas es el valor final que pagas. No tendrás cargos adicionales durante el proceso.</span>
@@ -631,6 +643,26 @@ const Internacional = () => {
         </div>
       </section>
 
+      {/* SECTION: ALLIANCE BANNER */}
+      <section className="inter-alliance-banner-section">
+        <div className="inter-alliance-banner-container">
+          <div className="inter-alliance-starken-brand">
+            <img 
+              src="/Logo-blanco.png" 
+              alt="Starken" 
+              className="inter-alliance-starken-logo" 
+            />
+            <div className="inter-alliance-starken-sub">
+              <span>internacional</span>
+            </div>
+          </div>
+
+          <p className="inter-alliance-text">
+            Starken Internacional nace de la unión de dos actores importantes del mundo de la logística internacional y distribución nacional: Starken (Grupo Jedimar) y Boarder Logistics (Grupo BL Corporations).
+          </p>
+        </div>
+      </section>
+
       {/* 6. SECTION: CONTACT FORM "¿Listo para enviar al mundo? Hablemos" */}
       <section id="contacto" className="inter-contact-section">
         <div className="inter-contact-container">
@@ -663,7 +695,7 @@ const Internacional = () => {
               </div>
 
               <a 
-                href="https://api.whatsapp.com/send?phone=56999999999&text=Hola,%20me%20gustaría%20cotizar%20servicios%20internacionales%20con%20Starken" 
+                href="https://api.whatsapp.com/send?phone=56996968373" 
                 target="_blank" 
                 rel="noopener noreferrer" 
                 className="inter-whatsapp-btn"
@@ -739,24 +771,64 @@ const Internacional = () => {
                   />
                 </div>
 
-                <div className="inter-form-group">
+                <div className="inter-form-group" ref={selectRef}>
                   <label htmlFor="asunto">* Asunto</label>
+                  
+                  {/* Hidden select to preserve form validation and accessibility */}
                   <select 
                     id="asunto" 
                     name="asunto" 
                     required 
                     value={formData.asunto}
                     onChange={handleFormChange}
-                    className="inter-form-control inter-select"
+                    tabIndex={-1}
+                    aria-hidden="true"
+                    style={{ position: 'absolute', opacity: 0, pointerEvents: 'none', width: '1px', height: '1px', left: 0 }}
                   >
                     <option value="">Selecciona un asunto</option>
-                    <option value="crossborder">Crossborder (E-commerce Internacional)</option>
-                    <option value="forwarder-terrestre">Forwarder - Servicio Terrestre</option>
-                    <option value="forwarder-aereo">Forwarder - Servicio Aéreo / Courier</option>
-                    <option value="forwarder-maritimo">Forwarder - Servicio Marítimo FCL/LCL</option>
-                    <option value="starken-box">Starken Box (Casilla USA)</option>
-                    <option value="otro">Otro requerimiento comercial</option>
+                    {asuntoOptions.map(opt => (
+                      <option key={opt.value} value={opt.value}>{opt.label}</option>
+                    ))}
                   </select>
+
+                  {/* Custom interactive dropdown */}
+                  <div className="inter-custom-select-wrapper">
+                    <button
+                      type="button"
+                      className={`inter-form-control inter-custom-select-trigger ${isSelectOpen ? 'open' : ''} ${!formData.asunto ? 'is-placeholder' : ''}`}
+                      onClick={() => setIsSelectOpen(prev => !prev)}
+                      aria-haspopup="listbox"
+                      aria-expanded={isSelectOpen}
+                    >
+                      <span className="inter-select-display-text">
+                        {asuntoOptions.find(opt => opt.value === formData.asunto)?.label || "Selecciona un asunto"}
+                      </span>
+                      <ChevronDown 
+                        size={18} 
+                        className={`inter-select-chevron ${isSelectOpen ? 'rotate' : ''}`} 
+                      />
+                    </button>
+
+                    {isSelectOpen && (
+                      <div className="inter-custom-select-dropdown" role="listbox">
+                        {asuntoOptions.map((opt) => (
+                          <div
+                            key={opt.value}
+                            className={`inter-custom-select-option ${formData.asunto === opt.value ? 'selected' : ''}`}
+                            onClick={() => {
+                              setFormData(prev => ({ ...prev, asunto: opt.value }));
+                              setIsSelectOpen(false);
+                            }}
+                            role="option"
+                            aria-selected={formData.asunto === opt.value}
+                          >
+                            <span>{opt.label}</span>
+                            {formData.asunto === opt.value && <Check size={16} strokeWidth={2.5} />}
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                  </div>
                 </div>
 
                 <button type="submit" className="inter-form-submit-btn">

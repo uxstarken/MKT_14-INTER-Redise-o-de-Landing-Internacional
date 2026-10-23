@@ -542,14 +542,14 @@
 
 .inter-solucion-title {
   font-family: var(--font-title, 'DIN 2014', sans-serif);
-  font-size: 22px;
+  font-size: 18px;
   font-weight: 800;
   color: #0F2847;
   margin-bottom: 8px;
 }
 
 .inter-solucion-desc {
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.6;
   color: #64748B;
   margin: 0;
@@ -566,7 +566,7 @@
 
 .inter-brush-title {
   font-family: var(--font-title, 'DIN 2014', sans-serif);
-  font-size: 38px;
+  font-size: 36px;
   font-weight: 800;
   color: #0F2847;
   position: relative;
@@ -577,7 +577,7 @@
 
 .inter-brush-accent {
   position: absolute;
-  bottom: 4px;
+  bottom: 3px;
   left: 0;
   width: 100%;
   height: 10px;
@@ -606,7 +606,7 @@
   display: flex;
   align-items: flex-start;
   gap: 12px;
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 500;
   color: #1E293B;
   line-height: 1.5;
@@ -784,15 +784,15 @@
 
 .inter-feature-title {
   font-family: var(--font-title, 'DIN 2014', sans-serif);
-  font-size: 16.5px;
+  font-size: 16px;
   font-weight: 700;
   color: #0F2847;
-  margin-bottom: 4px;
+  margin-bottom: 6px;
 }
 
 .inter-feature-desc {
-  font-size: 12.5px;
-  line-height: 1.45;
+  font-size: 14px;
+  line-height: 1.5;
   color: #64748B;
   margin: 0;
 }
@@ -864,16 +864,16 @@
 
 .inter-forwarder-subtitle {
   font-family: var(--font-title, 'DIN 2014', sans-serif);
-  font-size: 26px;
+  font-size: 24px;
   font-weight: 800;
   color: #0F2847;
   margin-bottom: 16px;
 }
 
 .inter-forwarder-desc {
-  font-size: 15px;
+  font-size: 16px;
   line-height: 1.6;
-  color: #475569;
+  color: #1E293B;
   margin-bottom: 28px;
 }
 
@@ -882,9 +882,9 @@
 }
 
 .inter-subservice-item p {
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.6;
-  color: #475569;
+  color: #1E293B;
   margin: 0;
 }
 
@@ -894,7 +894,7 @@
 
 .inter-extra-note {
   margin-top: 12px !important;
-  font-size: 13px !important;
+  font-size: 15px !important;
   font-style: italic;
   color: #64748B !important;
 }
@@ -984,10 +984,72 @@
 }
 
 /* ==========================================================================
+   ALLIANCE BANNER: STARKEN (GRUPO JEDIMAR) & BOARDER LOGISTICS (BL CORPORATIONS)
+   ========================================================================== */
+.inter-alliance-banner-section {
+  position: relative;
+  background: linear-gradient(105deg, #030C1A 0%, #081E38 42%, #143D69 100%);
+  padding: 84px 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.inter-alliance-banner-container {
+  max-width: 820px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 22px;
+}
+
+.inter-alliance-starken-brand {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin-bottom: 6px;
+}
+
+.inter-alliance-starken-logo {
+  height: 42px;
+  width: auto;
+  object-fit: contain;
+  display: block;
+}
+
+.inter-alliance-starken-sub {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 3px;
+  color: #ffffff;
+  font-family: var(--font-body, 'Nunito', sans-serif);
+  font-size: 13.5px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  line-height: 1;
+}
+
+.inter-alliance-text {
+  font-family: var(--font-body, 'Nunito', sans-serif);
+  font-size: 16px;
+  line-height: 1.65;
+  color: #ffffff;
+  max-width: 740px;
+  margin: 0;
+  font-weight: 400;
+}
+
+/* ==========================================================================
    6. SECTION: CONTACT FORM "¿Listo para enviar al mundo? Hablemos"
    ========================================================================== */
 .inter-contact-section {
-  padding: 80px 24px;
+  padding: 80px 24px 160px 24px;
   background-color: #ffffff;
 }
 
@@ -997,9 +1059,10 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   border-radius: 24px;
-  overflow: hidden;
+  overflow: visible;
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
   border: 1px solid #E2E8F0;
+  position: relative;
 }
 
 /* Left panel */
@@ -1011,6 +1074,7 @@
   flex-direction: column;
   justify-content: center;
   position: relative;
+  border-radius: 24px 0 0 24px;
 }
 
 .inter-contact-title {
@@ -1062,13 +1126,13 @@
 }
 
 .inter-channel-label {
-  font-size: 12px;
+  font-size: 14px;
   color: #94A3B8;
   font-weight: 500;
 }
 
 .inter-channel-value {
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 700;
   color: #ffffff;
   text-decoration: none;
@@ -1108,6 +1172,8 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  border-radius: 0 24px 24px 0;
+  position: relative;
 }
 
 .inter-form-heading {
@@ -1131,9 +1197,9 @@
 }
 
 .inter-form-group label {
-  font-size: 13px;
+  font-size: 16px;
   font-weight: 700;
-  color: #334155;
+  color: #1E293B;
 }
 
 .inter-form-control {
@@ -1141,12 +1207,17 @@
   padding: 12px 16px;
   border: 1.5px solid #E2E8F0;
   border-radius: 7px;
-  font-size: 14px;
+  font-size: 16px;
   font-family: var(--font-body);
   color: #1E293B;
   background-color: #F8FAFC;
   outline: none;
   transition: all 0.25s ease;
+}
+
+.inter-form-control::placeholder {
+  font-size: 16px;
+  color: #94A3B8;
 }
 
 .inter-form-control:focus {
@@ -1165,6 +1236,110 @@
   background-position: right 18px center;
   background-size: 16px;
   padding-right: 48px;
+}
+
+/* Custom Interactive Select */
+.inter-custom-select-wrapper {
+  position: relative;
+  width: 100%;
+  z-index: 50;
+}
+
+.inter-custom-select-trigger {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  text-align: left !important;
+  cursor: pointer;
+  user-select: none;
+  background-color: #F8FAFC;
+  border: 1.5px solid #E2E8F0;
+  border-radius: 7px;
+  padding: 12px 16px;
+  font-size: 16px;
+  color: #1E293B;
+  width: 100%;
+  transition: all 0.25s ease;
+}
+
+.inter-custom-select-trigger.is-placeholder .inter-select-display-text {
+  color: #94A3B8;
+}
+
+.inter-custom-select-trigger:focus,
+.inter-custom-select-trigger.open {
+  background-color: #ffffff;
+  border-color: #029E47;
+  box-shadow: 0 0 0 3px rgba(2, 158, 71, 0.12);
+}
+
+.inter-select-chevron {
+  color: #029E47;
+  transition: transform 0.25s ease;
+  flex-shrink: 0;
+  margin-left: 8px;
+}
+
+.inter-select-chevron.rotate {
+  transform: rotate(180deg);
+}
+
+.inter-custom-select-dropdown {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  width: 100%;
+  background: #ffffff;
+  border: 1.5px solid #E2E8F0;
+  border-radius: 8px;
+  box-shadow: 0 12px 30px rgba(15, 40, 71, 0.2), 0 4px 12px rgba(0, 0, 0, 0.08);
+  z-index: 1000;
+  overflow: hidden;
+  padding: 4px 0;
+  animation: selectFadeIn 0.18s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes selectFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.inter-custom-select-option {
+  padding: 12px 16px;
+  font-size: 15px;
+  color: #1E293B;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.inter-custom-select-option:hover {
+  background-color: #F1F5F9;
+  color: #0F2847;
+}
+
+/* OPCIÓN SELECCIONADA: AZUL PETRÓLEO PRINCIPAL CON TEXTO BLANCO */
+.inter-custom-select-option.selected {
+  background-color: #0F2847 !important;
+  color: #ffffff !important;
+  font-weight: 600;
+}
+
+.inter-custom-select-option.selected:hover {
+  background-color: #0F2847 !important;
+  color: #ffffff !important;
+}
+
+.inter-custom-select-option.selected svg {
+  color: #ffffff;
 }
 
 .inter-form-submit-btn {
@@ -1353,6 +1528,19 @@
     line-height: 1.45 !important;
   }
 
+  .inter-solucion-desc {
+    font-size: 14px !important;
+  }
+
+  .inter-brush-title {
+    font-size: 26px !important;
+  }
+
+  .inter-checklist li {
+    font-size: 14px !important;
+    line-height: 1.45 !important;
+  }
+
   .inter-floating-menu-container {
     width: 100% !important;
     background: transparent !important;
@@ -1437,33 +1625,87 @@
     padding: 36px 0 48px 0 !important;
   }
 
+  .inter-highlight-title-wrapper,
+  .inter-crossborder-left .inter-highlight-title-wrapper,
   .inter-forwarder-section .inter-highlight-title-wrapper {
     margin-top: 0 !important;
-    margin-bottom: 16px !important;
+    margin-bottom: 26px !important;
   }
 
   .inter-forwarder-block {
-    margin-top: 60px !important;
+    margin-top: 0 !important;
   }
 
-  .inter-forwarder-block:first-of-type,
-  .inter-forwarder-block:nth-of-type(1) {
-    margin-top: 0 !important;
+  .inter-forwarder-block + .inter-forwarder-block {
+    margin-top: 48px !important;
   }
 
   .inter-forwarder-subtitle {
     font-size: 20px !important;
+    margin-top: 0 !important;
     margin-bottom: 8px !important;
   }
 
-  .inter-forwarder-desc {
-    font-size: 13.5px !important;
-    line-height: 1.45 !important;
+  .inter-forwarder-desc,
+  .inter-subservice-item p {
+    font-size: 14px !important;
+    line-height: 1.5 !important;
     margin-bottom: 18px !important;
   }
 
   .inter-starkenbox-actions {
     width: 100%;
+  }
+
+  /* Contacto y Formulario en Mobile */
+  .inter-form-group label {
+    font-size: 14px !important;
+  }
+
+  .inter-form-control,
+  .inter-form-control::placeholder,
+  .inter-select,
+  .inter-custom-select-trigger,
+  .inter-custom-select-option {
+    font-size: 14px !important;
+  }
+
+  .inter-channel-value {
+    font-size: 14px !important;
+  }
+
+  .inter-contact-left-panel {
+    border-radius: 24px 24px 0 0 !important;
+  }
+
+  .inter-contact-right-panel {
+    border-radius: 0 0 24px 24px !important;
+  }
+
+  .inter-contact-container {
+    overflow: visible !important;
+  }
+
+  /* Alliance banner mobile */
+  .inter-alliance-banner-section {
+    padding: 56px 20px !important;
+  }
+
+  .inter-alliance-banner-container {
+    gap: 18px !important;
+  }
+
+  .inter-alliance-starken-logo {
+    height: 34px !important;
+  }
+
+  .inter-alliance-starken-sub {
+    font-size: 12px !important;
+  }
+
+  .inter-alliance-text {
+    font-size: 14px !important;
+    line-height: 1.55 !important;
   }
 }
 
