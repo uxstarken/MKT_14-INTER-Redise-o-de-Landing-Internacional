@@ -463,7 +463,8 @@
   position: relative;
   z-index: 1;
   background-color: #ffffff;
-  border-bottom: 1px solid #E2E8F0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  padding: 72px 0 52px 0;
 }
 
 .inter-section-header {
@@ -484,6 +485,13 @@
   color: #64748B;
   max-width: 700px;
   line-height: 1.6;
+}
+
+.inter-header-divider {
+  width: 100%;
+  height: 1px;
+  background-color: rgba(0, 0, 0, 0.06);
+  margin-top: 24px;
 }
 
 .inter-soluciones-grid {
@@ -553,6 +561,25 @@
   line-height: 1.6;
   color: #64748B;
   margin: 0;
+}
+
+.inter-solucion-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 14px;
+  font-family: var(--font-body, 'Nunito', sans-serif);
+  font-size: 15px;
+  font-weight: 700;
+  color: #029E47;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  width: fit-content;
+}
+
+.inter-solucion-link:hover {
+  gap: 10px;
+  color: #016E31;
 }
 
 /* ==========================================================================
@@ -647,7 +674,8 @@
    ========================================================================== */
 .inter-starkenbox-section {
   background-color: #f8fafc;
-  border-bottom: 1px solid #E2E8F0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  padding: 56px 0 72px 0;
 }
 
 .inter-starkenbox-layout {
@@ -715,7 +743,7 @@
    ========================================================================== */
 .inter-crossborder-section {
   background-color: #ffffff;
-  border-bottom: 1px solid #E2E8F0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
   padding: 80px 0;
 }
 
@@ -827,7 +855,7 @@
    ========================================================================== */
 .inter-forwarder-section {
   background-color: #f8fafc;
-  border-bottom: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
   padding: 60px 0 80px 0;
 }
 
@@ -1045,6 +1073,33 @@
   font-weight: 400;
 }
 
+.inter-alliance-partner-logo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+  gap: 8px;
+}
+
+.inter-alliance-bl-logo {
+  height: 48px;
+  width: auto;
+  max-width: 220px;
+  object-fit: contain;
+  display: block;
+}
+
+.inter-alliance-privacy-text {
+  font-family: var(--font-body, 'Nunito', sans-serif);
+  font-size: 13.5px;
+  font-weight: 400;
+  color: #6ea4c8;
+  letter-spacing: 0.2px;
+  cursor: default;
+  user-select: text;
+}
+
 /* ==========================================================================
    6. SECTION: CONTACT FORM "¿Listo para enviar al mundo? Hablemos"
    ========================================================================== */
@@ -1200,6 +1255,34 @@
   font-size: 16px;
   font-weight: 700;
   color: #1E293B;
+}
+
+.inter-required-asterisk {
+  color: #ef4444;
+  margin-right: 2px;
+  font-weight: 700;
+}
+
+.inter-form-control.inter-input-error,
+.inter-custom-select-trigger.inter-input-error {
+  border-color: #ef4444 !important;
+  background-color: #ffffff !important;
+}
+
+.inter-form-control.inter-input-error:focus,
+.inter-custom-select-trigger.inter-input-error:focus {
+  border-color: #ef4444 !important;
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.15) !important;
+}
+
+.inter-error-message {
+  font-family: var(--font-body, 'Nunito', sans-serif);
+  font-size: 13px;
+  font-weight: 500;
+  color: #ef4444;
+  margin-top: 4px;
+  line-height: 1.35;
+  display: block;
 }
 
 .inter-form-control {
@@ -1434,8 +1517,38 @@
     justify-content: space-between;
   }
 
+  .inter-section {
+    padding: 60px 0 !important;
+  }
+
+  .inter-soluciones-section {
+    padding-top: 48px !important;
+    padding-bottom: 52px !important;
+  }
+
+  .inter-starkenbox-section {
+    padding-top: 56px !important;
+    padding-bottom: 60px !important;
+  }
+
+  .inter-crossborder-section {
+    padding: 60px 0 !important;
+  }
+
   .inter-soluciones-grid {
     grid-template-columns: 1fr;
+    gap: 0 !important;
+  }
+
+  .inter-solucion-item:not(:last-child) {
+    padding-bottom: 36px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    margin-bottom: 36px;
+  }
+
+  .inter-solucion-item:last-child {
+    padding-bottom: 0;
+    margin-bottom: 0;
   }
 
   .inter-crossborder-layout {
@@ -1444,6 +1557,16 @@
 
   .inter-starkenbox-layout {
     grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .inter-starkenbox-photos-side {
+    width: 100%;
+  }
+
+  .inter-starkenbox-image-frame {
+    width: 100%;
+    max-width: 100%;
   }
 
   .inter-forwarder-block,
@@ -1506,16 +1629,66 @@
   }
 
   .inter-section {
-    padding: 40px 0 !important;
+    padding: 56px 0 !important;
   }
 
   .inter-soluciones-section {
-    padding-top: 36px !important;
-    padding-bottom: 44px !important;
+    padding-top: 40px !important;
+    padding-bottom: 52px !important;
+  }
+
+  .inter-starkenbox-section {
+    padding-top: 56px !important;
+    padding-bottom: 60px !important;
+  }
+
+  .inter-starkenbox-layout {
+    grid-template-columns: 1fr !important;
+    gap: 28px !important;
+  }
+
+  .inter-starkenbox-photos-side {
+    width: 100% !important;
+    display: block !important;
+  }
+
+  .inter-starkenbox-image-frame {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    border-radius: 20px !important;
+  }
+
+  .inter-starkenbox-img {
+    height: 190px !important; /* Ajustado a la mitad de los 380px originales */
+    width: 100% !important;
+    object-fit: cover !important;
+    object-position: center !important;
+    display: block !important;
+  }
+
+  .inter-crossborder-section {
+    padding: 60px 0 !important;
   }
 
   .inter-section-header {
-    margin-bottom: 24px !important;
+    margin-bottom: 28px !important;
+  }
+
+  .inter-header-divider {
+    margin-top: 20px !important;
+    background-color: rgba(0, 0, 0, 0.08) !important;
+  }
+
+  .inter-solucion-item:not(:last-child) {
+    padding-bottom: 36px !important;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08) !important;
+    margin-bottom: 36px !important;
+  }
+
+  .inter-solucion-item:last-child {
+    padding-bottom: 0 !important;
+    margin-bottom: 0 !important;
   }
 
   .inter-main-heading {
@@ -1622,7 +1795,7 @@
   }
 
   .inter-forwarder-section {
-    padding: 36px 0 48px 0 !important;
+    padding: 60px 0 !important;
   }
 
   .inter-highlight-title-wrapper,
@@ -1651,6 +1824,43 @@
     font-size: 14px !important;
     line-height: 1.5 !important;
     margin-bottom: 18px !important;
+  }
+
+  /* Cards de atributos Forwarder en 2 columnas y 2 filas */
+  .inter-forwarder-attributes-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 10px !important;
+    margin-top: 20px !important;
+  }
+
+  .inter-attr-item {
+    display: flex !important;
+    align-items: center !important;
+    padding: 10px 12px !important;
+    gap: 9px !important;
+    min-height: 60px !important;
+    height: 100% !important;
+    box-sizing: border-box !important;
+    border-radius: 12px !important;
+  }
+
+  .inter-attr-icon {
+    width: 34px !important;
+    height: 34px !important;
+    min-width: 34px !important;
+    border-radius: 9px !important;
+    flex-shrink: 0 !important;
+  }
+
+  .inter-attr-icon svg {
+    width: 17px !important;
+    height: 17px !important;
+  }
+
+  .inter-attr-text {
+    font-size: 12.5px !important;
+    line-height: 1.25 !important;
+    font-weight: 700 !important;
   }
 
   .inter-starkenbox-actions {
@@ -1707,6 +1917,14 @@
     font-size: 14px !important;
     line-height: 1.55 !important;
   }
+
+  .inter-alliance-bl-logo {
+    height: 38px !important;
+  }
+
+  .inter-alliance-privacy-text {
+    font-size: 12.5px !important;
+  }
 }
 
 @media (max-width: 640px) {
@@ -1720,7 +1938,30 @@
   }
 
   .inter-forwarder-attributes-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 8px !important;
+  }
+
+  .inter-attr-item {
+    padding: 8px 10px !important;
+    gap: 8px !important;
+    min-height: 56px !important;
+  }
+
+  .inter-attr-icon {
+    width: 32px !important;
+    height: 32px !important;
+    min-width: 32px !important;
+  }
+
+  .inter-attr-icon svg {
+    width: 16px !important;
+    height: 16px !important;
+  }
+
+  .inter-attr-text {
+    font-size: 11.5px !important;
+    line-height: 1.2 !important;
   }
 
   .inter-contact-left-panel,

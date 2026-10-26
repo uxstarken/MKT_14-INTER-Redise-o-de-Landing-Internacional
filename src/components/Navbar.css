@@ -167,7 +167,7 @@
 }
 
 .btn-ingresar {
-  background-color: #00A651; /* Verde Starken */
+  background-color: #009D4E; /* Verde base primario Starken */
   color: #ffffff;
   width: 160px;
   height: 51px;
@@ -180,14 +180,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 14px rgba(0, 166, 81, 0.28);
+  box-shadow: 0 4px 14px rgba(0, 157, 78, 0.28);
   transition: all 0.2s ease;
   box-sizing: border-box;
 }
 
 .btn-ingresar:hover {
-  background-color: #009246;
-  box-shadow: 0 6px 18px rgba(0, 166, 81, 0.38);
+  background-color: #008743;
+  box-shadow: 0 6px 18px rgba(0, 157, 78, 0.38);
   transform: translateY(-1px);
 }
 
@@ -358,7 +358,7 @@
 }
 
 .mobile-btn-ingresar {
-  background-color: #029E47;
+  background-color: #009D4E;
   color: #ffffff;
   padding: 14px;
   border-radius: 9999px; /* Bordes totalmente redondeados tipo píldora */
@@ -373,7 +373,7 @@
 }
 
 .mobile-btn-ingresar:hover {
-  background-color: #02853c;
+  background-color: #008743;
 }
 
 .mobile-crear-cuenta-link {

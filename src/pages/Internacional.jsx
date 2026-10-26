@@ -39,6 +39,8 @@ const Internacional = () => {
     celular: '',
     asunto: ''
   });
+  const [formErrors, setFormErrors] = useState({});
+  const [formTouched, setFormTouched] = useState({});
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [isSelectOpen, setIsSelectOpen] = useState(false);
   const selectRef = useRef(null);
@@ -70,16 +72,114 @@ const Internacional = () => {
     }
   };
 
+  const validateField = (name, value) => {
+    let error = '';
+    if (name === 'nombre') {
+      const val = value ? value.trim() : '';
+      if (!val) {
+        error = 'Nombre debe tener un mínimo de 3 letras.';
+      } else if (val.length < 3) {
+        error = 'Nombre debe tener un mínimo de 3 letras.';
+      } else if (/[0-9]/.test(value)) {
+        error = 'El nombre no debe contener números.';
+      }
+    } else if (name === 'correo') {
+      const val = value ? value.trim() : '';
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!val) {
+        error = 'Ingrese un correo electrónico válido, siga el formato correo@mail.com';
+      } else if (!val.includes('@') || !emailRegex.test(val)) {
+        error = 'Ingrese un correo electrónico válido, siga el formato correo@mail.com';
+      }
+    } else if (name === 'celular') {
+      const digits = value ? value.replace(/\D/g, '') : '';
+      if (!digits) {
+        error = 'Ingrese un número de teléfono válido.';
+      } else if (digits.length < 9) {
+        error = 'Ingrese un número de teléfono válido (9 dígitos, ej: 912345678).';
+      }
+    } else if (name === 'asunto') {
+      if (!value) {
+        error = 'Selecciona un asunto.';
+      }
+    }
+    return error;
+  };
+
   const handleFormChange = (e) => {
     const { name, value } = e.target;
+    let cleanVal = value;
+
+    // En nombre no se permiten números
+    if (name === 'nombre') {
+      cleanVal = value.replace(/[0-9]/g, '');
+    }
+
+    // En celular no se permiten letras, sólo números y máximo 9 dígitos
+    if (name === 'celular') {
+      cleanVal = value.replace(/\D/g, '').slice(0, 9);
+    }
+
     setFormData(prev => ({
       ...prev,
-      [name]: value
+      [name]: cleanVal
     }));
+
+    // Si el campo ya fue tocado o hay error previo, validar en tiempo real
+    if (formTouched[name] || formErrors[name]) {
+      const err = validateField(name, cleanVal);
+      setFormErrors(prev => ({
+        ...prev,
+        [name]: err
+      }));
+    }
+  };
+
+  const handleBlur = (e) => {
+    const { name, value } = e.target;
+    setFormTouched(prev => ({ ...prev, [name]: true }));
+    const err = validateField(name, value);
+    setFormErrors(prev => ({ ...prev, [name]: err }));
+  };
+
+  const handleSelectAsunto = (optValue) => {
+    setFormData(prev => ({ ...prev, asunto: optValue }));
+    setIsSelectOpen(false);
+    setFormTouched(prev => ({ ...prev, asunto: true }));
+    const err = validateField('asunto', optValue);
+    setFormErrors(prev => ({ ...prev, asunto: err }));
   };
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
+
+    const errors = {
+      nombre: validateField('nombre', formData.nombre),
+      correo: validateField('correo', formData.correo),
+      celular: validateField('celular', formData.celular),
+      asunto: validateField('asunto', formData.asunto)
+    };
+
+    setFormTouched({
+      nombre: true,
+      correo: true,
+      celular: true,
+      asunto: true
+    });
+    setFormErrors(errors);
+
+    const hasErrors = Object.values(errors).some(err => err !== '');
+    if (hasErrors) {
+      if (errors.nombre) {
+        document.getElementById('nombre')?.focus();
+      } else if (errors.correo) {
+        document.getElementById('correo')?.focus();
+      } else if (errors.celular) {
+        document.getElementById('celular')?.focus();
+      }
+      return;
+    }
+
     setFormSubmitted(true);
     setTimeout(() => {
       setFormData({
@@ -88,6 +188,8 @@ const Internacional = () => {
         celular: '',
         asunto: ''
       });
+      setFormErrors({});
+      setFormTouched({});
     }, 1500);
   };
 
@@ -119,7 +221,7 @@ const Internacional = () => {
             </p>
             <div className="inter-hero-actions">
               <a 
-                href="https://starkenbox.com" 
+                href="https://starkenbox.com/registerstarken" 
                 target="_blank" 
                 rel="noopener noreferrer" 
                 className="inter-hero-btn-lime"
@@ -261,6 +363,7 @@ const Internacional = () => {
             <p className="inter-sub-heading">
               Facilitamos tus envíos con eficiencia, alcance global y el respaldo de una red experta.
             </p>
+            <div className="inter-header-divider"></div>
           </div>
 
           <div className="inter-soluciones-grid">
@@ -279,6 +382,15 @@ const Internacional = () => {
                 <p className="inter-solucion-desc">
                   Ofrecemos consolidaciones propias y regulares, end to end (USA, China y el resto del mundo), para emprendedores y empresas importadoras y/o exportadoras.
                 </p>
+                <a 
+                  href="https://starkenbox.com" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="inter-solucion-link"
+                >
+                  <span>Saber más</span>
+                  <ArrowRight size={16} />
+                </a>
               </div>
             </div>
 
@@ -332,10 +444,6 @@ const Internacional = () => {
                   alt="Cliente Starken Box" 
                   className="inter-starkenbox-img"
                 />
-                <div className="inter-starkenbox-floating-badge">
-                  <span className="badge-tag">Casilla Miami</span>
-                  <strong>Starken Box</strong>
-                </div>
               </div>
             </div>
 
@@ -364,12 +472,12 @@ const Internacional = () => {
 
               <div className="inter-starkenbox-actions">
                 <a 
-                  href="https://starkenbox.com" 
+                  href="https://starkenbox.com/registerstarken" 
                   target="_blank" 
                   rel="noopener noreferrer" 
                   className="inter-btn-primary"
                 >
-                  <span>Saber más</span>
+                  <span>Regístrate aquí</span>
                   <ArrowRight size={18} />
                 </a>
               </div>
@@ -415,8 +523,9 @@ const Internacional = () => {
               </ul>
 
               <a 
-                href="#" 
-                onClick={(e) => e.preventDefault()}
+                href="https://developers.starken.cl/" 
+                target="_blank" 
+                rel="noopener noreferrer" 
                 className="inter-link-action"
               >
                 <span>Conoce nuestras integraciones</span>
@@ -472,7 +581,7 @@ const Internacional = () => {
                 <div className="inter-feature-content">
                   <h4 className="inter-feature-title">Última milla con cobertura total</h4>
                   <p className="inter-feature-desc">
-                    Entregamos a lo largo de Chile con 300 sucursales, 100 PUDOs y una flota propia, asegurando tiempos de entrega estándar y express.
+                    Entregamos a lo largo de Chile con 300 sucursales, 100 puntos Soy Starken y una flota propia, asegurando tiempos de entrega estándar y express.
                   </p>
                 </div>
               </div>
@@ -660,6 +769,17 @@ const Internacional = () => {
           <p className="inter-alliance-text">
             Starken Internacional nace de la unión de dos actores importantes del mundo de la logística internacional y distribución nacional: Starken (Grupo Jedimar) y Boarder Logistics (Grupo BL Corporations).
           </p>
+
+          <div className="inter-alliance-partner-logo">
+            <img 
+              src="/logo-bl-corporations.png" 
+              alt="BL Corporations" 
+              className="inter-alliance-bl-logo" 
+            />
+            <span className="inter-alliance-privacy-text">
+              privacy policy and terms of service.
+            </span>
+          </div>
         </div>
       </section>
 
@@ -726,59 +846,85 @@ const Internacional = () => {
                 </button>
               </div>
             ) : (
-              <form onSubmit={handleFormSubmit} className="inter-contact-form">
+              <form onSubmit={handleFormSubmit} className="inter-contact-form" noValidate>
                 <h3 className="inter-form-heading">Formulario de contacto</h3>
 
                 <div className="inter-form-group">
-                  <label htmlFor="nombre">* Nombre y Apellido</label>
+                  <label htmlFor="nombre">
+                    <span className="inter-required-asterisk">*</span> Nombre y Apellido
+                  </label>
                   <input 
                     type="text" 
                     id="nombre" 
                     name="nombre" 
-                    required 
                     placeholder="Escribe tu nombre" 
                     value={formData.nombre}
                     onChange={handleFormChange}
-                    className="inter-form-control"
+                    onBlur={handleBlur}
+                    className={`inter-form-control ${formErrors.nombre ? 'inter-input-error' : ''}`}
+                    aria-invalid={!!formErrors.nombre}
                   />
+                  {formErrors.nombre && (
+                    <span className="inter-error-message">
+                      {formErrors.nombre}
+                    </span>
+                  )}
                 </div>
 
                 <div className="inter-form-group">
-                  <label htmlFor="correo">* Correo</label>
+                  <label htmlFor="correo">
+                    <span className="inter-required-asterisk">*</span> Correo
+                  </label>
                   <input 
                     type="email" 
                     id="correo" 
                     name="correo" 
-                    required 
                     placeholder="correo@correo.cl" 
                     value={formData.correo}
                     onChange={handleFormChange}
-                    className="inter-form-control"
+                    onBlur={handleBlur}
+                    className={`inter-form-control ${formErrors.correo ? 'inter-input-error' : ''}`}
+                    aria-invalid={!!formErrors.correo}
                   />
+                  {formErrors.correo && (
+                    <span className="inter-error-message">
+                      {formErrors.correo}
+                    </span>
+                  )}
                 </div>
 
                 <div className="inter-form-group">
-                  <label htmlFor="celular">* Celular</label>
+                  <label htmlFor="celular">
+                    <span className="inter-required-asterisk">*</span> Celular
+                  </label>
                   <input 
                     type="tel" 
                     id="celular" 
                     name="celular" 
-                    required 
+                    maxLength={9}
                     placeholder="Ingresa n° de teléfono" 
                     value={formData.celular}
                     onChange={handleFormChange}
-                    className="inter-form-control"
+                    onBlur={handleBlur}
+                    className={`inter-form-control ${formErrors.celular ? 'inter-input-error' : ''}`}
+                    aria-invalid={!!formErrors.celular}
                   />
+                  {formErrors.celular && (
+                    <span className="inter-error-message">
+                      {formErrors.celular}
+                    </span>
+                  )}
                 </div>
 
                 <div className="inter-form-group" ref={selectRef}>
-                  <label htmlFor="asunto">* Asunto</label>
+                  <label htmlFor="asunto">
+                    <span className="inter-required-asterisk">*</span> Asunto
+                  </label>
                   
                   {/* Hidden select to preserve form validation and accessibility */}
                   <select 
                     id="asunto" 
                     name="asunto" 
-                    required 
                     value={formData.asunto}
                     onChange={handleFormChange}
                     tabIndex={-1}
@@ -795,7 +941,7 @@ const Internacional = () => {
                   <div className="inter-custom-select-wrapper">
                     <button
                       type="button"
-                      className={`inter-form-control inter-custom-select-trigger ${isSelectOpen ? 'open' : ''} ${!formData.asunto ? 'is-placeholder' : ''}`}
+                      className={`inter-form-control inter-custom-select-trigger ${isSelectOpen ? 'open' : ''} ${!formData.asunto ? 'is-placeholder' : ''} ${formErrors.asunto ? 'inter-input-error' : ''}`}
                       onClick={() => setIsSelectOpen(prev => !prev)}
                       aria-haspopup="listbox"
                       aria-expanded={isSelectOpen}
@@ -815,10 +961,7 @@ const Internacional = () => {
                           <div
                             key={opt.value}
                             className={`inter-custom-select-option ${formData.asunto === opt.value ? 'selected' : ''}`}
-                            onClick={() => {
-                              setFormData(prev => ({ ...prev, asunto: opt.value }));
-                              setIsSelectOpen(false);
-                            }}
+                            onClick={() => handleSelectAsunto(opt.value)}
                             role="option"
                             aria-selected={formData.asunto === opt.value}
                           >
@@ -829,6 +972,11 @@ const Internacional = () => {
                       </div>
                     )}
                   </div>
+                  {formErrors.asunto && (
+                    <span className="inter-error-message">
+                      {formErrors.asunto}
+                    </span>
+                  )}
                 </div>
 
                 <button type="submit" className="inter-form-submit-btn">
