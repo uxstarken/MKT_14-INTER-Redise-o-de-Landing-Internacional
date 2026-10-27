@@ -355,85 +355,7 @@ const Internacional = () => {
         </div>
       </div>
 
-      {/* 2. SECTION: SOLUCIONES A MEDIDA */}
-      <section className="inter-section inter-soluciones-section">
-        <div className="inter-container">
-          <div className="inter-section-header">
-            <h2 className="inter-main-heading">Soluciones a medida</h2>
-            <p className="inter-sub-heading">
-              Facilitamos tus envíos con eficiencia, alcance global y el respaldo de una red experta.
-            </p>
-            <div className="inter-header-divider"></div>
-          </div>
-
-          <div className="inter-soluciones-grid">
-            {/* Pilar 1: Starken box */}
-            <div className="inter-solucion-item">
-              <div className="inter-solucion-img-frame">
-                <img 
-                  src="/inter-starken-box.jpg" 
-                  alt="Starken Box Casilla USA" 
-                  className="inter-solucion-photo"
-                />
-                <span className="inter-photo-badge">Casilla USA</span>
-              </div>
-              <div className="inter-solucion-info">
-                <h3 className="inter-solucion-title">Starken box</h3>
-                <p className="inter-solucion-desc">
-                  Ofrecemos consolidaciones propias y regulares, end to end (USA, China y el resto del mundo), para emprendedores y empresas importadoras y/o exportadoras.
-                </p>
-                <a 
-                  href="https://starkenbox.com" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="inter-solucion-link"
-                >
-                  <span>Saber más</span>
-                  <ArrowRight size={16} />
-                </a>
-              </div>
-            </div>
-
-            {/* Pilar 2: Crossborder */}
-            <div className="inter-solucion-item">
-              <div className="inter-solucion-img-frame">
-                <img 
-                  src="/inter-crossborder-tech.jpg" 
-                  alt="Crossborder Starken" 
-                  className="inter-solucion-photo"
-                />
-                <span className="inter-photo-badge">E-commerce Global</span>
-              </div>
-              <div className="inter-solucion-info">
-                <h3 className="inter-solucion-title">Crossborder</h3>
-                <p className="inter-solucion-desc">
-                  Servicio de Cross-Border internacional con logística nacional y fullfilment. Ofrecemos soluciones como traje a la medida para atender las necesidades del ecommerce mundial.
-                </p>
-              </div>
-            </div>
-
-            {/* Pilar 3: Forwarder */}
-            <div className="inter-solucion-item">
-              <div className="inter-solucion-img-frame">
-                <img 
-                  src="/inter-air-cargo.jpg" 
-                  alt="Forwarder Starken" 
-                  className="inter-solucion-photo"
-                />
-                <span className="inter-photo-badge">Carga & Courier</span>
-              </div>
-              <div className="inter-solucion-info">
-                <h3 className="inter-solucion-title">Forwarder</h3>
-                <p className="inter-solucion-desc">
-                  Nuestra plataforma nos permite ofrecer servicio express courier end to end para cargas de todo el mundo hasta la puerta de tu casa. Como también servicios aéreos generales de importación y exportación.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 3. SECTION: STARKEN BOX */}
+      {/* 2. SECTION: STARKEN BOX */}
       <section id="starken-box" className="inter-section inter-starkenbox-section">
         <div className="inter-container">
           <div className="inter-starkenbox-layout">
@@ -472,14 +394,92 @@ const Internacional = () => {
 
               <div className="inter-starkenbox-actions">
                 <a 
-                  href="https://starkenbox.com/registerstarken" 
+                  href="https://starkenbox.com/" 
                   target="_blank" 
                   rel="noopener noreferrer" 
                   className="inter-btn-primary"
                 >
-                  <span>Regístrate aquí</span>
+                  <span>Saber más</span>
                   <ArrowRight size={18} />
                 </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 3. SECTION: SOLUCIONES A MEDIDA */}
+      <section className="inter-section inter-soluciones-section">
+        <div className="inter-container">
+          <div className="inter-section-header">
+            <h2 className="inter-main-heading">Soluciones a medida</h2>
+            <p className="inter-sub-heading">
+              Facilitamos tus envíos con eficiencia, alcance global y el respaldo de una red experta.
+            </p>
+            <div className="inter-header-divider"></div>
+          </div>
+
+          <div className="inter-soluciones-grid">
+            {/* Pilar 1: Starken box */}
+            <div className="inter-solucion-item">
+              <div className="inter-solucion-img-frame">
+                <img 
+                  src="/inter-starken-box.jpg" 
+                  alt="Starken Box Casilla USA" 
+                  className="inter-solucion-photo"
+                />
+                <span className="inter-photo-badge">Casilla USA</span>
+              </div>
+              <div className="inter-solucion-info">
+                <h3 className="inter-solucion-title">Starken box</h3>
+                <p className="inter-solucion-desc">
+                  Ofrecemos consolidaciones propias y regulares, end to end (USA, China y el resto del mundo), para emprendedores y empresas importadoras y/o exportadoras.
+                </p>
+                <a 
+                  href="https://starkenbox.com/registerstarken" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="inter-solucion-link"
+                >
+                  <span>Regístrate aquí</span>
+                  <ArrowRight size={16} />
+                </a>
+              </div>
+            </div>
+
+            {/* Pilar 2: Crossborder */}
+            <div className="inter-solucion-item">
+              <div className="inter-solucion-img-frame">
+                <img 
+                  src="/inter-crossborder-tech.jpg" 
+                  alt="Crossborder Starken" 
+                  className="inter-solucion-photo"
+                />
+                <span className="inter-photo-badge">E-commerce Global</span>
+              </div>
+              <div className="inter-solucion-info">
+                <h3 className="inter-solucion-title">Crossborder</h3>
+                <p className="inter-solucion-desc">
+                  Servicio de Cross-Border internacional con logística nacional y fullfilment. Ofrecemos soluciones como traje a la medida para atender las necesidades del ecommerce mundial.
+                </p>
+              </div>
+            </div>
+
+            {/* Pilar 3: Forwarder */}
+            <div className="inter-solucion-item">
+              <div className="inter-solucion-img-frame">
+                <img 
+                  src="/inter-air-cargo.jpg" 
+                  alt="Forwarder Starken" 
+                  className="inter-solucion-photo"
+                />
+                <span className="inter-photo-badge">Carga & Courier</span>
+              </div>
+              <div className="inter-solucion-info">
+                <h3 className="inter-solucion-title">Forwarder</h3>
+                <p className="inter-solucion-desc">
+                  Nuestra plataforma nos permite ofrecer servicio express courier end to end para cargas de todo el mundo hasta la puerta de tu casa. Como también servicios aéreos generales de importación y exportación.
+                </p>
               </div>
             </div>
           </div>
